@@ -1,4 +1,5 @@
 import {
+  Body,
   Controller,
   Get,
   HttpCode,
@@ -10,12 +11,13 @@ import {
   Res,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { CraeteCatDto } from './CreateCatDto.dto';
 
 @Controller('cat')
 export class CatController {
   @Post()
-  create(@Res() res: Response) {
-    res.status(HttpStatus.CREATED).send();
+  async create(@Body() createCatDto: CraeteCatDto) {
+    return `This action adds a new cat`;
   }
 
   @Get()
