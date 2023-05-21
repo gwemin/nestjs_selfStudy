@@ -19,8 +19,8 @@ export class CatController {
   }
 
   @Get()
-  findAll(@Res() res: Response) {
-    res.status(HttpStatus.OK).json([]);
+  async findAll(): Promise<any[]> {
+    return [];
   }
 
   @Get(':id')
