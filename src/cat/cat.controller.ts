@@ -1,7 +1,9 @@
 import {
   Controller,
   Get,
+  HttpCode,
   HttpStatus,
+  Param,
   Post,
   Query,
   Redirect,
@@ -21,7 +23,13 @@ export class CatController {
     res.status(HttpStatus.OK).json([]);
   }
 
+  @Get(':id')
+  findId(@Param() params, @Res() res: Response) {
+    res.status(HttpStatus.OK).send(`Hello World ${params.id}`);
+  }
+
   @Get('docs')
+  @HttpCode(203)
   @Redirect('https://docs.nestjs.com', 302)
   getDocs(@Query('version') version) {
     if (version && version === '5') {
